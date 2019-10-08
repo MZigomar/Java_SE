@@ -1,12 +1,18 @@
 package car;
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * @author MZigomaar
  *
  */
-public class Car {
+public class Car implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3130146439070047495L;
+	
 	private Brand brand;
 	private Color color;
 	private int speed;
