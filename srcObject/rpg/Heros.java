@@ -2,38 +2,40 @@ package rpg;
 import java.util.*; 
 
 public class Heros {
-
-	private boolean dead;
+	
+	private final int stats = 40;
+	
+	private String nom;
 	
 	private int hp;
 	private int atk;
 	private int def;
+
+	private boolean dead;
 	
-	private String nom;
-	
-	private final int stats = 30;
+	private Arme arme;
 	
 	public Heros (String nom) {
 		dead = false;
 		Random r1 = new Random();
-		atk = r1.nextInt(5)+5;
-		def = atk/2+1;
+		atk = r1.nextInt(6)+5;
+		def = atk/2+2;
 		hp = stats - atk - def;
 		
 		this.nom = nom;
 	}
-	
+
 	//METHOD
 	public void Attaquer(Heros cible) {
 		if(cible.getDef() >= this.getAtk() ) {
-			System.out.println("L'attaque n'inflige aucun dégât\n");
+			System.out.println("The attack deals no damage.\n");
 			return;
 		}
-		System.out.println(this.nom+" attaque "+cible.getNom()+" et inflige "+(this.getAtk() - cible.getDef()+" dégats !\n"));
+		System.out.println(this.nom+" hits "+cible.getNom()+" and deals "+(this.getAtk() - cible.getDef()+" damages !\n"));
 		cible.setHp(cible.getHp() - (this.getAtk() - cible.getDef())) ;
 		
 		if(cible.getHp()<=0) {
-			System.out.println(cible.getNom()+ " est mort.\n");
+			System.out.println(cible.getNom()+ " is dead..\n");
 			cible.die();
 		}
 		
@@ -54,6 +56,10 @@ public class Heros {
 
 	public String getNom() {return nom;}
 	public void setNom(String nom) {this.nom = nom;}
+	
+	public Arme getArme() {return arme;}
+	public void setArme(Arme arme) {this.arme = arme;}
+
 
 	//TOSTRING
 	public String toString() {

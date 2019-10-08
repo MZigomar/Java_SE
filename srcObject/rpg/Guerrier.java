@@ -2,14 +2,17 @@ package rpg;
 
 public class Guerrier extends Heros {
 
-	public Guerrier(String nom) {
+	public Guerrier(String nom, Arme arme) {
 		super(nom);
-		super.setDef(getDef()+2);
-		super.setHp(getHp()+4);
+		super.setArme(arme);
+		super.setAtk(getAtk()+arme.getAtkBonus());
+		super.setDef(getDef()+5+arme.getDefBonus());
+		super.setHp(getHp()+10+arme.getHpBonus());
 	}
 
+
 	public String toString() {
-		return "(Guerrier)"+super.toString();
+		return "(Warrior with "+super.getArme()+")"+super.toString();
 	}
 	
 }
