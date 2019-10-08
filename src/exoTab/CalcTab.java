@@ -17,13 +17,17 @@ public class CalcTab {
 		tab = new int[size];
 		this.fill(size, max, min);;
 	}
-	
-	public CalcTab (Scanner size, Scanner sc) {
-		System.out.print("Type size : ");
-		tab = new int[size.nextInt()];
-		System.out.println("\nType "+tab.length+" values : ");
-		for (int i = 0 ; i<tab.length ; i++) {
-			tab[i]=sc.nextInt();
+
+	public CalcTab(Scanner sc) {
+		try {
+			System.out.print("Type size : ");
+			tab = new int[sc.nextInt()];
+			System.out.println("\nType " + tab.length + " values : ");
+			for (int i = 0; i < tab.length; i++) {
+				tab[i] = sc.nextInt();
+			}
+		} catch (Exception e) {
+			System.out.println("Try again and type int please.");
 		}
 	}
 	
@@ -50,7 +54,7 @@ public class CalcTab {
 				max=i;
 		return max;
 	}
-	
+
 	public double moy() {
 		double moy=0;
 		for (int i : tab) {
