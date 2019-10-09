@@ -35,7 +35,7 @@ public class Heros {
 		cible.setHp(cible.getHp() - (this.getAtk() - cible.getDef())) ;
 		
 		if(cible.getHp()<=0) {
-			System.out.println(cible.getNom()+ " is dead..\n");
+			System.out.println(cible.getNom()+ " is dead...\nBATTLE ENDEND_____________\n");
 			cible.die();
 		}
 		

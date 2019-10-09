@@ -4,10 +4,10 @@ public class main {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		int pause = 1000;
+		int pause = 300;
 		
-		Heros mzigomar = new Guerrier("MZigomar", Arme.values()[1] );
-		Heros zug = new Mage("ZUG",  Arme.values()[0] );
+		Heros mzigomar = new Guerrier("MZigomar", Arme.values()[0] );
+		Heros zug = new Mage("ZUG",  Arme.values()[1] );
 
 		System.out.println("NEW CHALLENGERS : \n");			
 		Thread.sleep(pause);
