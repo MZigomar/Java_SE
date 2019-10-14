@@ -10,22 +10,37 @@ public class TestJdbc {
 	private String user = "root";
 	private String password = "";
 
-	public void test(Personne p) {
+	public void test(String query) {
 
 		Connection con = null;
 		Statement st = null;
+
+		// String query1 = "insert into Personne values('" + p.getFirstName() + "','"+
+		// p.getLastName() + "','DateTest')"; //" + p.getBirthDay().toString() + "')");
+		String query2 = query.toString(); // "select * from personne;";
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(url, user, password);
 			st = con.createStatement();
 
-			st.executeUpdate("insert into Personne(firstName, lastName, birthDay)values('" + p.getFirstName() + "','"
-					+ p.getLastName() + "','" + p.getBirthDay().toString() + "')");
+			// Update BDD
+			// st.executeUpdate(query1);
+
+			// Select BDD
+			ResultSet rs = st.executeQuery(query2);
+			System.out.println("Query = " + query2);
+			while (rs.next()) {
+				System.out.println("rs.next");
+				
+				System.out.println("Name : " + rs.getString(1) + " " + rs.getString(2) + " \n" + rs.getString(3));
+			}
 
 		} catch (ClassNotFoundException e1) {
+			System.out.println("e1 = " + e1.toString());
 			System.out.println("Driver loading error");
 		} catch (SQLException e2) {
+			System.out.println("e2 = " + e2.toString());
 			System.out.println("Base connection error");
 		} finally {
 			try {
